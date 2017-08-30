@@ -15,18 +15,22 @@ const TodoList = function(){
     return `You added ${newTask.task} to the list!`
   }
 
-  this.items = function() {
-    return this.listResult
-  }
-
   this.complete = (id) => {
     listResult.map(function(aResult){
-      console.log(aResult.id === id)
       if(aResult.id === id) {
         aResult.complete = true
       }
       return `A ${aResult}`
     })
+  }
+
+  this.delete = (id) => {
+    return listResult.filter((aResult) => aResult.id !== id)
+
+  }
+
+  this.items = function() {
+    return this.listResult
   }
 }
 
@@ -38,23 +42,8 @@ list.complete(1)
 
 list.items()
 
-//   this.completeItem = (id) => {
-//     // takes an id and marks it as complete
-//
-//   };
-//
 //   this.deleteItem = (id) => {
 //     // takes an id and removes it from list
-//
-//   };
-//
-// };
-//
-// var list = new TodoList();
-// list.add("thing");
-// list.add("other thing");
-// list.item();
-
 
 // list.add('Do laundry')
 // => [{id:1, task: 'Do laundry', complete: false}]
