@@ -8,55 +8,26 @@ app.set('view engine', 'pug')
 app.use(bodyParser.urlencoded({extended: false }))
 app.use(cookieParser())
 
-app.use((req, res, next) => {
-  req.message = 'This message made it!'
-  next()
-})
+const mainRoutes = require('./routes')
+const cardRoutes = require('./routes/cards')
+const port = 3000
+
+app.use(mainRoutes)
+app.use('/cards', cardRoutes)
 
 app.use((req, res, next) => {
-  console.log(req.message)
-  next()
+  const err = new Error('Not Found')
+  err.status = 404
+  next(err)
 })
 
-
-app.get('/', (req, res) => {
-  const name = req.cookies.username
-  if (name){
-    res.render('index', {name})
-  } else
-    res.redirect('/hello')
+app.use((err, req, res, next) => {
+  res.locals.error = err
+  res.status(err.status)
+  res.render('error')
+  next(err)
 })
 
-
-// Either one of these variable formats are valid in PUG
-app.get('/cards', (req, res) => {
-  res.locals.prompt='Who is buried in Grant\'s tomb?',
-  res.render('card', { hint: 'Think about who\'s tomb it is.'}
-  )
-})
-
-app.get('/hello', (req, res) => {
-  res.render('hello')
-})
-
-app.get('/goodbye', (req, res) => {
-  res.render('goodbye')
-})
-
-app.post('/hello', (req, res) => {
-  res.cookie('username', req.body.username)
-  res.redirect('/')
-})
-
-app.post('/', (req, res) => {
-  res.redirect('/cards')
-})
-
-app.post('/goodbye', (req, res) => {
-  res.clearCookie('username')
-  res.redirect('/')
-})
-
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log('The application is running on port localhost:3000')
 })
