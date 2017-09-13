@@ -2,8 +2,8 @@ extends layout
 
 block content
   section#content
+    h2= text
     if hint
-      p #{prompt} <br /> <br />
+      p 
         i Hint: #{hint}
-    else
-      p (There is no hint.)
+    if text = 

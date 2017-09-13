@@ -9,19 +9,13 @@ router.get('/', (req, res) => {
     res.redirect('/hello')
 })
 
-// // Either one of these variable formats are valid in PUG
-// router.get('/cards', (req, res) => {
-//   res.locals.prompt='Who is buried in Grant\'s tomb?',
-//   res.render('card', { hint: 'Think about who\'s tomb it is.'}
-//   )
-// })
-
 router.get('/hello', (req, res) => {
-  res.render('hello')
-})
-
-router.get('/goodbye', (req, res) => {
-  res.render('goodbye')
+  const name = req.cookies.username
+  if (name){
+    res.redirect('/')
+  } else {
+    res.render('hello')
+  }
 })
 
 router.post('/hello', (req, res) => {
@@ -29,13 +23,9 @@ router.post('/hello', (req, res) => {
   res.redirect('/')
 })
 
-router.post('/', (req, res) => {
-  res.redirect('/cards')
-})
-
 router.post('/goodbye', (req, res) => {
   res.clearCookie('username')
-  res.redirect('/')
+  res.redirect('/hello')
 })
 
 module.exports = router
