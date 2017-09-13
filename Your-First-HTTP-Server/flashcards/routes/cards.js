@@ -1,11 +1,20 @@
 const express = require('express')
 const router = express.Router()
+const {data} = require('../data/flashcardData.json')
+const {cards} = data
 
-// Either one of these variable formats are valid in PUG
-router.get('/', (req, res) => {
-  res.locals.prompt='Who is buried in Grant\'s tomb?',
-  res.render('card', { hint: 'Think about who\'s tomb it is.'}
-  )
+router.get('/:id', (req, res) => {
+  const {side} = req.query
+  const {id} = req.params
+  const text = cards[id][side]
+  const {hint} = cards[id]
+  const templateData = {text}
+
+  if (side === 'question') {
+    templateData.hint = hint
+  }
+
+  res.render('card', templateData)
 })
 
 module.exports = router
