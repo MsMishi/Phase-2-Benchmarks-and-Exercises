@@ -10,6 +10,11 @@ const getAll = () => {
   return Shows().select()
 }
 
+const getSingle = (showID) => {
+  return Shows().where('id', parseInt(showID)).first()
+}
+
 module.exports = {
-  getAll: getAll
+  getAll: getAll,
+  getSingle: getSingle
 }

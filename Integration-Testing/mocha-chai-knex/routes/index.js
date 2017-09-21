@@ -14,4 +14,14 @@ router.get('/shows', function(req, res, next) {
     })
 })
 
+router.get('/shows/:id', function(req, res, next) {
+  queries.getSingle(req.params.id)
+    .then(function(shows) {
+      res.status(200).json(shows)
+    })
+    .catch(function(error) {
+      next(error)
+    })
+})
+
 module.exports = router
