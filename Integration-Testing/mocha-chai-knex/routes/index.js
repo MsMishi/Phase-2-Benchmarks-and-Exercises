@@ -1,9 +1,27 @@
 const express = require('express')
 const router = express.Router()
 
+const queries = require('../db/queries')
+
 // *** GET all shows *** //
 router.get('/shows', function(req, res, next) {
-  res.send('send shows back')
+  queries.getAll()
+    .then(function(shows) {
+      res.status(200).json(shows)
+    })
+    .catch(function(error) {
+      next(error)
+    })
+})
+
+router.get('/shows/:id', function(req, res, next) {
+  queries.getSingle(req.params.id)
+    .then(function(shows) {
+      res.status(200).json(shows)
+    })
+    .catch(function(error) {
+      next(error)
+    })
 })
 
 module.exports = router

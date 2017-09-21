@@ -1,10 +1,9 @@
-
 exports.seed = function(knex, Promise) {
   return knex('shows').del() // Deletes ALL existing entries
     .then(function() { //Insert seed entries one by one in series
       return knex('shows').insert({
         name: 'Suits',
-        channel: 'USA',
+        channel: 'USA Network',
         genre: 'Drama',
         rating: 3,
         explicit: false
