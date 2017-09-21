@@ -1,7 +1,6 @@
-
 exports.seed = function(knex, Promise) {
   return knex('shows').del() // Deletes ALL existing entries
-    .then(function() { // Inserts seed entries one by one in series
+    .then(function() { //Insert seed entries one by one in series
       return knex('shows').insert({
         name: 'Suits',
         channel: 'USA Network',
@@ -22,10 +21,10 @@ exports.seed = function(knex, Promise) {
         name: 'South Park',
         channel: 'Comedy Central',
         genre: 'Comedy',
-        rating: '4',
+        rating: 4,
         explicit: true
       })
-    }).then(function() {
+    }).then(function () {
       return knex('shows').insert({
         name: 'Mad Men',
         channel: 'AMC',
@@ -34,4 +33,4 @@ exports.seed = function(knex, Promise) {
         explicit: false
       })
     })
-}
+} 
