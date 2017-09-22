@@ -38,4 +38,18 @@ router.post('/shows', function(req, res, next) {
     })
 })
 
+// *** update show *** //
+router.put('/shows/:id', function(req, res, next) {
+  queries.update(req.params.id, req.body)
+    .then(function() {
+      return queries.getSingle(req.params.id)
+    })
+    .then(function(show) {
+      res.status(200).json(show)
+    })
+    .catch(function(show) {
+      next(error)
+    })
+})
+
 module.exports = router

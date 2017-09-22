@@ -19,10 +19,11 @@ const add = (show) => {
 }
 
 const update = (showID, updates) {
-  return
+  return Shows().where('id', parseInt(showID)).update(updates)
 }
 module.exports = {
   getAll: getAll,
   getSingle: getSingle,
-  add: add
+  add: add,
+  update: update
 }
