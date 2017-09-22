@@ -18,7 +18,7 @@ const add = (show) => {
   return Shows().insert(show, 'id')
 }
 
-const update = (showID, updates) {
+const update = (showID, updates) => {
   return Shows().where('id', parseInt(showID)).update(updates)
 }
 module.exports = {
