@@ -14,7 +14,15 @@ const getSingle = (showID) => {
   return Shows().where('id', parseInt(showID)).first()
 }
 
+const add = (show) => {
+  return Shows().insert(show, 'id')
+}
+
+const update = (showID, updates) {
+  return
+}
 module.exports = {
   getAll: getAll,
-  getSingle: getSingle
+  getSingle: getSingle,
+  add: add
 }
