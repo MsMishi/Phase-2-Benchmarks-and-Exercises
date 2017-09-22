@@ -24,4 +24,18 @@ router.get('/shows/:id', function(req, res, next) {
     })
 })
 
+// *** add show *** //
+router.post('/shows', function(req, res, next) {
+  queries.add(req.body)
+    .then(function(showID) {
+      return queries.getSingle(showID)
+    })
+    .then(function(show) {
+      res.status(200).json(show)
+    })
+    .catch(function(error) {
+      next(error)
+    })
+})
+
 module.exports = router
