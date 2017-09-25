@@ -57,4 +57,19 @@ router.put('/shows/:id', function(req, res, next) {
     })
 })
 
+// *** delete show *** //
+router.delete('/shows/:id', function(req, res, next) {
+  queries.getSingle(req.params.id)
+    .then(function(show) {
+      return queries.deleteItem(req.params.id)
+        .then(function() {
+          res.status(200).json(show)
+        })
+        .catch(function(error) {
+          next(error)
+        })
+    })
+})
+
+
 module.exports = router
