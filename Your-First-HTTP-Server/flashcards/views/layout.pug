@@ -4,5 +4,9 @@ html(lang="en")
     title Flash Cards
   body
     include includes/header.pug
+    h2 Welcome, #{name}!
     block content
+    p
+    form(action='/goodbye', method='post')
+      button(type='submit') Goodbye!
     include includes/footer.pug
