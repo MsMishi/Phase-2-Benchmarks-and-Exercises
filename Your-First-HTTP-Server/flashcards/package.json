@@ -1,0 +1,20 @@
+{
+  "name": "flashcards",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "mocha --recursive"
+  },
+  "keywords": [],
+  "author": "Mishi Charles",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "express": "^4.15.2",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.12.1",
+    "pug": "^2.0.0-rc.3"
+  }
+}
