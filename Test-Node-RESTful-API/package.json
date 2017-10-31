@@ -1,0 +1,28 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "A bookstore API",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MsMishi/Phase-2-Benchmarks-and-Exercises.git"
+  },
+  "keywords": [
+    "bookstore"
+  ],
+  "author": "Mishi Charles",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MsMishi/Phase-2-Benchmarks-and-Exercises/issues"
+  },
+  "homepage": "https://github.com/MsMishi/Phase-2-Benchmarks-and-Exercises#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
